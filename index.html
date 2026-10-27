@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#081a2d">
+  <meta name="description" content="GLOBAL BET — prototype original de plateforme de football et de simulation de paris sportifs.">
+  <title>GLOBAL BET — Football</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="GLOBAL BET accueil"><span class="brand-mark">GB</span><span>GLOBAL <b>BET</b><small>FOOTBALL • RDC</small></span></a>
+    <nav class="topnav"><a href="#matches">Matchs</a><a href="#how">Comment ça marche</a></nav>
+    <div class="account-actions"><button class="btn btn-outline" id="login-open">Connexion</button><button class="btn btn-green" id="signup-open">Créer un compte</button></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="live-dot"></span> LE FOOTBALL AU CENTRE DU JEU</span>
+        <h1>Vivez chaque match<br><em>intensément.</em></h1>
+        <p>Une expérience football moderne, pensée pour les supporters. Explorez les matchs et testez vos pronostics dans un environnement de démonstration.</p>
+        <a class="btn btn-green btn-large" href="#matches">Explorer les matchs <span>→</span></a>
+        <p class="hero-note">Prototype de démonstration · Aucun argent réel</p>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orb orb-one"></div><div class="orb orb-two"></div>
+        <div class="stadium">
+          <div class="stadium-light"></div><div class="pitch"><div class="pitch-mid"></div><div class="pitch-circle"></div><div class="pitch-box left"></div><div class="pitch-box right"></div></div>
+          <div class="ball">⚽</div>
+        </div>
+        <div class="floating-score"><small>MATCH EN VEDETTE</small><div><span>ARS</span><b>VS</b><span>CHE</span></div><small>Simulation de match</small></div>
+      </div>
+    </section>
+
+    <section class="ticker"><span>⚽ FOOTBALL</span><span>★ PRONOSTICS</span><span>◷ MATCHS À VENIR</span><span>◆ MODE DÉMO</span></section>
+
+    <section class="content-section" id="matches">
+      <div class="section-head">
+        <div><span class="eyebrow">CENTRE DES MATCHS</span><h2>Choisissez votre match</h2><p class="muted">Les rencontres et cotes ci-dessous sont fictives pour tester le site.</p></div>
+        <div class="filter-tabs" role="group" aria-label="Filtrer les matchs"><button class="filter active" data-filter="all">Tous</button><button class="filter" data-filter="today">Aujourd'hui</button><button class="filter" data-filter="upcoming">À venir</button></div>
+      </div>
+      <div class="league-heading"><span class="league-icon">🏆</span><div><b>Europe • Matchs de démonstration</b><small>Rencontres fictives — pas de données en direct</small></div><span class="league-count">3 MATCHS</span></div>
+      <div id="match-list" class="match-list"></div>
+    </section>
+
+    <section class="slip-section" id="ticket">
+      <div class="section-head"><div><span class="eyebrow">VOTRE SÉLECTION</span><h2>Ticket de démonstration</h2></div><button class="text-btn" id="clear-slip">Tout effacer</button></div>
+      <div class="slip-layout">
+        <div class="slip-card">
+          <div id="slip-items"><div class="empty-state"><span>＋</span><b>Votre ticket est vide</b><p>Sélectionnez une cote dans la liste des matchs pour commencer.</p></div></div>
+          <div class="stake-row"><label for="stake">Mise virtuelle (FC)</label><input id="stake" type="number" min="100" step="100" value="1000" inputmode="numeric"></div>
+          <div class="potential"><span>Gain potentiel estimé</span><b id="potential">1 000 FC</b></div>
+          <button class="btn btn-green full" id="save-ticket">Enregistrer le ticket de démo</button>
+          <p class="tiny-note">Valeur fictive uniquement. Aucun dépôt, paiement ou retrait n'est disponible.</p>
+        </div>
+        <aside class="responsible-card"><div class="responsible-icon">✓</div><h3>Une plateforme responsable</h3><p>GLOBAL BET est actuellement un prototype. Les tickets sont virtuels et n'ont aucune valeur monétaire.</p><ul><li>Pas de paiement réel</li><li>Pas de promesse de gain</li><li>Données de match fictives</li></ul></aside>
+      </div>
+    </section>
+
+    <section class="content-section history-section">
+      <div class="section-head"><div><span class="eyebrow">ESPACE PERSONNEL</span><h2>Mes tickets de démonstration</h2><p class="muted">Connectez-vous pour enregistrer et consulter vos tickets.</p></div></div>
+      <div id="ticket-history" class="history-list"><div class="empty-state compact"><p>Connectez-vous pour voir vos tickets enregistrés.</p></div></div>
+    </section>
+
+    <section class="how-section" id="how">
+      <span class="eyebrow">SIMPLE ET CLAIR</span><h2>Comment tester GLOBAL BET</h2>
+      <div class="how-grid"><article><span>01</span><h3>Explorez les matchs</h3><p>Parcourez les rencontres de démonstration et leurs marchés 1N2.</p></article><article><span>02</span><h3>Choisissez une cote</h3><p>Ajoutez une ou plusieurs sélections à votre ticket virtuel.</p></article><article><span>03</span><h3>Enregistrez votre test</h3><p>Connectez-vous pour sauvegarder votre ticket de démonstration.</p></article></div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">GB</span><span>GLOBAL <b>BET</b><small>FOOTBALL • RDC</small></span></a><p>Prototype logiciel indépendant. Non affilié à betPawa.</p><p>© <span id="year"></span> GLOBAL BET · Version de démonstration</p></footer>
+
+  <div class="modal-backdrop" id="auth-modal" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+      <button class="modal-close" id="modal-close" aria-label="Fermer">×</button>
+      <div class="modal-logo">GB</div><span class="eyebrow">BIENVENUE CHEZ GLOBAL BET</span><h2 id="auth-title">Créez votre compte</h2><p class="muted" id="auth-subtitle">Enregistrez vos tickets de démonstration.</p>
+      <form id="auth-form">
+        <label for="auth-email">Adresse e-mail</label><input id="auth-email" type="email" required autocomplete="email" placeholder="vous@exemple.com">
+        <label for="auth-password">Mot de passe</label><input id="auth-password" type="password" required minlength="8" autocomplete="current-password" placeholder="8 caractères minimum">
+        <button class="btn btn-green full" id="auth-submit" type="submit">Créer mon compte</button>
+      </form>
+      <p class="auth-switch" id="auth-switch">Déjà inscrit ? <button class="text-btn" type="button">Se connecter</button></p>
+      <p class="tiny-note">La connexion en ligne fonctionne après configuration de Supabase. Ne réutilisez pas un mot de passe important.</p>
+      <div id="auth-message" class="notice" hidden></div>
+    </section>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
